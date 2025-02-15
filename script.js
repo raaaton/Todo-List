@@ -40,7 +40,7 @@ function render() {
         </li>`;
     });
 
-    if (todoItems.length === 0) {
+    if (!todoItems) {
         noTodoEl.textContent = "You haven't created any Todo item yet. Try to create one.";
     } else {
         noTodoEl.textContent = "";
