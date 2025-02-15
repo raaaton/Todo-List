@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+:root {
+    --dark-blue: #001926;
+    --very-transparent-blue: #219EBC23;
+    --transparent-blue: #219dbc71;
+    --blue: #219EBC;
+    --light-blue: #8ECAE6;
+    --red: #DF233c;
+}
+
+body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background-color: var(--dark-blue);
+    color: var(--light-blue);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.content-wrapper {
+    width: 350px;
+}
+
+.title {
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 800;
+    color: var(--blue);
+}
+
+.add-todo-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: auto;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+input[type="text"] {
+    font-family: inherit;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+}    
+
+input[type="text"]:focus {
+    box-shadow: 0px 0px 5px 1px var(--blue);
+}
+
+button {
+    font-family: inherit;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--blue);
+    color: var(--dark-blue);
+    cursor: pointer;
+}
+
+#error-el {
+    color: var(--red);
+    text-align: center;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 1rem;
+    width: 350px;
+    padding: 0;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    font-size: 1.1rem;
+    width: calc(350px - 32px);
+    background-color: var(--very-transparent-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+ul li:has(input[type="checkbox"]:checked) {
+    background-color: var(--transparent-blue);
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    max-width: 350px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid var(--blue);
+    border-radius: 0.25rem;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--blue);
+}
+
+ul li:has(input[type="checkbox"]:checked) :not(.icon) {
+    text-decoration: line-through;
+}
+
+a {
+    text-decoration: none;
+    color: var(--light-blue);
+}
+
+.icon {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.icon:hover {
+    color: var(--red);
+}
+
+#no-todo-yet {
+    font-size: 1.3rem;
+    width: clamp(100px, 70vw, 350px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .content-wrapper {
+        width: 90%;
+    }
+
+    ul {
+        width: 100%;
+    }
+
+    ul li {
+        width: calc(100% - 32px);
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    button {
+        width: 50%;
+    }
+}

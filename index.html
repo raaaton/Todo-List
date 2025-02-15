@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/f6e384411c/UntitledProject/style.css">
+    <link rel="icon" href="favicon.ico">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1 class="title">Todo List</h1>
+
+    <div class="content-wrapper">
+        <form class="add-todo-form">
+            <input type="text" class="todo-input" id="input-el" placeholder="Add a new todo">
+            <button type="submit" class="add-todo-button" id="input-btn">Add</button>
+        </form>
+        <p id="error-el"></p>
+        <div class="wrapper todo-item-wrapper">
+            <ul id="ul-el" class="todo-items-ul" >
+                <!-- Todo items will be dynamically added here via JS-->
+            </ul>
+            <p id="no-todo-yet">You haven't created any Todo item yet. Try to create one.</p>
+        </div>
+    </div>
+        
+    <script src="script.js"></script>
+</body>
+</html>
