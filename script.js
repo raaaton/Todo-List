@@ -24,11 +24,9 @@ ulEl.addEventListener("click", function(e) {
 function render() {
     ulEl.innerHTML = "";
     
-    // Séparer les tâches non complétées et complétées
     let incompleteTodos = todoItems.filter(item => !item.completed);
     let completeTodos = todoItems.filter(item => item.completed);
     
-    // Concaténer les listes pour garder l'ordre de création
     let sortedTodos = [...incompleteTodos, ...completeTodos];
     
     sortedTodos.forEach((item, index) => {
