@@ -146,7 +146,7 @@ a {
     color: var(--red);
 }
 
-#no-todo-yet {
+#no-todo-yet-p {
     font-size: 1.3rem;
     width: clamp(100px, 70vw, 350px);
 }

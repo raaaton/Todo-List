@@ -2,7 +2,7 @@ const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const errorEl = document.getElementById("error-el");
 const ulEl = document.getElementById("ul-el");
-const noTodoEl = document.getElementById("no-todo-yet");
+const noTodoEl = document.getElementById("no-todo-yet-p");
 
 let todoItems = [];
 
@@ -49,11 +49,14 @@ function render() {
 
 function addItemToList() {
     const inputValue = inputEl.value;
-    if (inputValue === "") {
+    if (!inputValue) {
         errorEl.textContent = "Please enter a valid value";
     } else {
         errorEl.textContent = "";
-        todoItems.push({ text: inputValue, completed: false });
+        todoItems.push({ 
+            text: inputValue,
+            completed: false
+        });
         inputEl.value = "";
     }
     render();
@@ -74,3 +77,5 @@ function toggleComplete(index) {
         render();
     }
 }
+
+// TODO: qu'on puisse rajouter une date : affecter une date : trier par date -> une date pour demain, pour lundi, pour le 7 decembre, trier par date ou par nom + inversé
