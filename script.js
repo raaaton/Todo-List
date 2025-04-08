@@ -4,7 +4,8 @@ const errorEl = document.getElementById("error-el");
 const ulEl = document.getElementById("ul-el");
 const noTodoEl = document.getElementById("no-todo-yet-p");
 
-let todoItems = [];
+let todoItems = JSON.parse(localStorage.getItem("todoItems")) || [];
+render();
 
 inputBtn.addEventListener("click", function(e) {
     e.preventDefault();
@@ -28,19 +29,21 @@ function render() {
     let completeTodos = todoItems.filter(item => item.completed);
     
     let sortedTodos = [...incompleteTodos, ...completeTodos];
-    
+
+    localStorage.setItem("todoItems", JSON.stringify(sortedTodos));
+
     sortedTodos.forEach((item, index) => {
         ulEl.innerHTML += `
         <li>
             <div class="todo-item">
-                <input type="checkbox" class="todo-checkbox" data-index="${todoItems.indexOf(item)}" ${item.completed ? "checked" : ""}>
+                <input type="checkbox" class="todo-checkbox" data-index="${index}" ${item.completed ? "checked" : ""}>
                 ${item.text}
             </div>
-            <span class="delete-el icon icon-bin" data-index="${todoItems.indexOf(item)}"></span>
+            <span class="delete-el icon icon-bin" data-index="${index}"></span>
         </li>`;
     });
 
-    if (!todoItems) {
+    if (sortedTodos.length === 0) {
         noTodoEl.textContent = "You haven't created any Todo item yet. Try to create one.";
     } else {
         noTodoEl.textContent = "";
@@ -58,14 +61,15 @@ function addItemToList() {
             completed: false
         });
         inputEl.value = "";
+        render();
     }
-    render();
 }
 
 function deleteItem(index) {
     index = parseInt(index);
     if (!isNaN(index) && index >= 0 && index < todoItems.length) {
         todoItems.splice(index, 1);
+        localStorage.setItem("todoItems", JSON.stringify(todoItems));
         render();
     }
 }
@@ -74,8 +78,11 @@ function toggleComplete(index) {
     index = parseInt(index);
     if (!isNaN(index) && index >= 0 && index < todoItems.length) {
         todoItems[index].completed = !todoItems[index].completed;
+        localStorage.setItem("todoItems", JSON.stringify(todoItems));
         render();
     }
 }
+
+
 
 // TODO: qu'on puisse rajouter une date : affecter une date : trier par date -> une date pour demain, pour lundi, pour le 7 decembre, trier par date ou par nom + inversé
