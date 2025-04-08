@@ -83,6 +83,4 @@ function toggleComplete(index) {
     }
 }
 
-
-
 // TODO: qu'on puisse rajouter une date : affecter une date : trier par date -> une date pour demain, pour lundi, pour le 7 decembre, trier par date ou par nom + inversé
